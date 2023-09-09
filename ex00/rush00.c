@@ -1,59 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   rush00.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboughan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: msloot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 20:13:08 by fboughan          #+#    #+#             */
-/*   Updated: 2023/09/09 20:13:11 by fboughan         ###   ########.fr       */
+/*   Created: 2023/09/09 17:34:30 by msloot            #+#    #+#             */
+/*   Updated: 2023/09/10 00:01:18 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
 void	ft_putchar(char a);
 
-void	every_if(int aa, int bb, int cc, int ll)
+void	every_if(int a, int b, int x, int y)
 {
-	if ((aa < '2' && bb < '2') || (aa > ll - 1 && bb < '2'))
-	{
+	if ((a == 1 && b == 1)
+		|| (a == 1 && b == x)
+		|| (a == y && b == 1)
+		|| (a == y && b == x))
 		ft_putchar('o');
-	}
-	else if ((aa < '2' && bb > cc - 1) || (aa == ll && bb == cc))
-	{
-		ft_putchar('o');
-	}
-	else if ((aa < ll && bb == '1') || (aa > '1' && bb == cc))
-	{
-		ft_putchar('|');
-	}
-	else if (aa > '1' && aa < ll && bb > '1' && bb < cc)
-	{
-		ft_putchar(' ');
-	}
-	else
-	{
+	else if (a == 1 || a == y)
 		ft_putchar('-');
-	}
+	else if (b == 1 || b == x)
+		ft_putchar('|');
+	else
+		ft_putchar(' ');
 }
 
 void	rush(int x, int y)
 {
-	int	l;
-	int	c;
 	int	a;
 	int	b;
 
-	a = '1';
-	l = x;
-	c = y;
-	while (a <= x)
+	a = 1;
+	while (a <= y)
 	{
-		b = '1';
-		while (b <= y)
+		b = 1;
+		while (b <= x)
 		{
-			every_if(a, b, c, l);
+			every_if(a, b, x, y);
 			b++;
 		}
 		a++;
