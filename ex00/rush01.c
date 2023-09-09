@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   rush01.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fboughan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 20:13:08 by fboughan          #+#    #+#             */
-/*   Updated: 2023/09/09 20:13:11 by fboughan         ###   ########.fr       */
+/*   Created: 2023/09/09 20:32:58 by fboughan          #+#    #+#             */
+/*   Updated: 2023/09/09 20:43:26 by fboughan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	ft_putchar(char a);
 
 void	every_if(int aa, int bb, int cc, int ll)
 {
-	if ((aa < '2' && bb < '2') || (aa > ll - 1 && bb < '2'))
+	if ((aa == '1' && bb == '1') || (aa == ll && bb == cc))
 	{
-		ft_putchar('o');
+		ft_putchar('/');
 	}
-	else if ((aa < '2' && bb > cc - 1) || (aa == ll && bb == cc))
+	else if ((aa == '1' && bb == cc) || (aa == ll && bb == '1'))
 	{
-		ft_putchar('o');
+		ft_putchar('\\');
 	}
 	else if ((aa < ll && bb == '1') || (aa > '1' && bb == cc))
 	{
@@ -34,26 +34,22 @@ void	every_if(int aa, int bb, int cc, int ll)
 	}
 	else
 	{
-		ft_putchar('-');
+		ft_putchar('*');
 	}
 }
 
 void	rush(int x, int y)
 {
-	int	l;
-	int	c;
 	int	a;
 	int	b;
 
 	a = '1';
-	l = x;
-	c = y;
 	while (a <= x)
 	{
 		b = '1';
 		while (b <= y)
 		{
-			every_if(a, b, c, l);
+			every_if(a, b, y, x);
 			b++;
 		}
 		a++;
