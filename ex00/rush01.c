@@ -3,39 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   rush01.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboughan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: msloot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 20:32:58 by fboughan          #+#    #+#             */
-/*   Updated: 2023/09/09 20:43:26 by fboughan         ###   ########.fr       */
+/*   Created: 2023/09/09 17:34:30 by msloot            #+#    #+#             */
+/*   Updated: 2023/09/09 23:53:35 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
 void	ft_putchar(char a);
 
-void	every_if(int aa, int bb, int cc, int ll)
+void	every_if(int a, int b, int x, int y)
 {
-	if ((aa == '1' && bb == '1') || (aa == ll && bb == cc))
-	{
+	if (a == 1 && b == 1)
 		ft_putchar('/');
-	}
-	else if ((aa == '1' && bb == cc) || (aa == ll && bb == '1'))
-	{
+	else if (a == 1 && b == x)
 		ft_putchar('\\');
-	}
-	else if ((aa < ll && bb == '1') || (aa > '1' && bb == cc))
-	{
-		ft_putchar('|');
-	}
-	else if (aa > '1' && aa < ll && bb > '1' && bb < cc)
-	{
-		ft_putchar(' ');
-	}
-	else
-	{
+	else if (a == y && b == 1)
+		ft_putchar('\\');
+	else if (a == y && b == x)
+		ft_putchar('/');
+	else if (a == 1 || a == y || b == 1 || b == x)
 		ft_putchar('*');
-	}
+	else
+		ft_putchar(' ');
 }
 
 void	rush(int x, int y)
@@ -43,13 +33,13 @@ void	rush(int x, int y)
 	int	a;
 	int	b;
 
-	a = '1';
-	while (a <= x)
+	a = 1;
+	while (a <= y)
 	{
-		b = '1';
-		while (b <= y)
+		b = 1;
+		while (b <= x)
 		{
-			every_if(a, b, y, x);
+			every_if(a, b, x, y);
 			b++;
 		}
 		a++;
