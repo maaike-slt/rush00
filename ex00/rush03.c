@@ -1,58 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush00.c                                           :+:      :+:    :+:   */
+/*   rush03.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchau <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: msloot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 11:21:44 by jchau             #+#    #+#             */
-/*   Updated: 2023/09/09 11:21:46 by jchau            ###   ########.fr       */
+/*   Created: 2023/09/09 17:34:30 by msloot            #+#    #+#             */
+/*   Updated: 2023/09/09 23:29:24 by msloot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
 void	ft_putchar(char a);
 
-void	every_if(int aa, int bb, int cc, int ll)
+void	every_if(int a, int b, int x, int y)
 {
-	if ((aa == '1' && bb == '1') || (aa == ll && bb == '1'))
-	{
+	if (a == 1 && b == 1)
 		ft_putchar('A');
-	}
-	else if ((aa == '1' && bb == cc) || (aa == ll && bb == cc))
-	{
+	else if (a == 1 && b == x)
 		ft_putchar('C');
-	}
-	else if (aa > '1' && aa < ll && bb > '1' && bb < cc)
-	{
-		ft_putchar(' ');
-	}
-	else
-	{
+	else if (a == y && b == 1)
+		ft_putchar('A');
+	else if (a == y && b == x)
+		ft_putchar('C');
+	else if (a == 1 || a == y || b == 1 || b == x)
 		ft_putchar('B');
-	}
+	else
+		ft_putchar(' ');
 }
 
 void	rush(int x, int y)
 {
-	int	l;
-	int	c;
 	int	a;
 	int	b;
 
-	a = '1';
-	l = x;
-	c = y;
-	while (a <= x)
+	a = 1;
+	while (a <= y)
 	{
-		b = '1';
-		while (b <= y)
+		b = 1;
+		while (b <= x)
 		{
-			every_if(a, b, c, l);
+			every_if(a, b, x, y);
 			b++;
 		}
 		a++;
-		write(1, "\n", 1);
+		ft_putchar('\n');
 	}
 }
